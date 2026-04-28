@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Workspace - StudentCollab</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <nav class="navbar glass-effect">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <ion-icon name="rocket"></ion-icon>
+                <span>StudentCollab</span>
+            </a>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span id="currentUser" class="text-secondary"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 2rem;">
+        <div class="glass-effect" style="padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h1 id="workspaceProjectName">Loading...</h1>
+                    <p id="workspaceProjectDesc" class="text-secondary">...</p>
+                    <div id="workspaceProjectSkills" class="project-skills" style="margin-top: 1rem;"></div>
+                </div>
+                <button class="btn btn-primary" id="joinProjectBtn" style="display: none;">Join Project</button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="tasks">Tasks Board</button>
+            <button class="tab-btn" data-tab="chat">Team Chat</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="glass-effect" style="padding: 2rem; border-radius: 16px;">
+                <h3>Team Members</h3>
+                <ul id="teamMemberList" style="list-style-type: none; margin-top: 1rem;">
+                    <!-- Members will be listed here -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tasks Tab -->
+        <div id="tasks" class="tab-content">
+            <div style="margin-bottom: 1rem;">
+                <form id="addTaskForm" style="display: flex; gap: 1rem;">
+                    <input type="text" id="newTaskInput" placeholder="What needs to be done?" class="search-input" style="flex-grow: 1;" required>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+            </div>
+            <div class="board">
+                <div class="board-column glass-effect" data-status="todo">
+                    <div class="column-header">
+                        <span>To Do</span>
+                        <span class="badge" id="todoCount">0</span>
+                    </div>
+                    <div class="task-list" id="todoList"></div>
+                </div>
+                <div class="board-column glass-effect" data-status="inprogress">
+                    <div class="column-header">
+                        <span>In Progress</span>
+                        <span class="badge" id="inprogressCount">0</span>
+                    </div>
+                    <div class="task-list" id="inprogressList"></div>
+                </div>
+                <div class="board-column glass-effect" data-status="done">
+                    <div class="column-header">
+                        <span>Done</span>
+                        <span class="badge" id="doneCount">0</span>
+                    </div>
+                    <div class="task-list" id="doneList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Tab -->
+        <div id="chat" class="tab-content">
+            <div class="glass-effect chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will appear here -->
+                </div>
+                <form class="chat-input-area" id="chatForm">
+                    <input type="text" id="chatInput" placeholder="Type your message..." required>
+                    <button type="submit" class="btn btn-primary"><ion-icon name="send"></ion-icon></button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/project.js"></script>
+</body>
+</html>
